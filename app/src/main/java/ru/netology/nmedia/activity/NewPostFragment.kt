@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.FragmentNewPostBinding
 import ru.netology.nmedia.util.AndroidUtils
 import ru.netology.nmedia.util.StringArg
@@ -42,9 +45,17 @@ class NewPostFragment : Fragment() {
             AndroidUtils.hideKeyboard(requireView())
         }
         viewModel.postCreated.observe(viewLifecycleOwner) {
-            viewModel.loadPosts()
+            //viewModel.loadPosts()
             findNavController().navigateUp()
         }
+
+        viewModel.error.observe(viewLifecycleOwner, {
+            Snackbar.make(
+                binding.bottomAppBar, getString(R.string.operation_failed) + ": {$it}",
+                Snackbar.LENGTH_SHORT
+            ).show()
+        })
+
         return binding.root
     }
 }
