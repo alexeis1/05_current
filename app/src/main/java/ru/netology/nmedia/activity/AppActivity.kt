@@ -2,12 +2,8 @@ package ru.netology.nmedia.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.GoogleApiAvailability
-import com.google.firebase.iid.FirebaseInstanceId
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.NewPostFragment.Companion.textArg
 
@@ -36,9 +32,9 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
                 )
         }
 
-        checkGoogleApiAvailability()
+       // checkGoogleApiAvailability()
     }
-
+/*
     private fun checkGoogleApiAvailability() {
         with(GoogleApiAvailability.getInstance()) {
             val code = isGooglePlayServicesAvailable(this@AppActivity)
@@ -56,5 +52,5 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
         FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener {
             println(it.token)
         }
-    }
+    }*/
 }
